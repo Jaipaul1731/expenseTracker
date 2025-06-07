@@ -71,7 +71,7 @@ function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
   };
   return (
     <div>
-      <h2>Expense History</h2>
+      <h2>Transactions</h2>
       {expenses.length === 0 ? (
         <p>No expenses yet.</p>
       ) : (

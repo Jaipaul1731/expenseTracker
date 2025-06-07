@@ -29,3 +29,10 @@ body {
   height: 300px;
   border-radius: 5px;
 }
+
+@media screen and (min-width: 768px) {
+  .inner-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

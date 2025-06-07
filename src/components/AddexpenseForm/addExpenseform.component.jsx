@@ -66,14 +66,14 @@ const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
   return (
     <div className="expenses_form">
       <h2 className="heading">
-        expenses: <span className="expenses">₹ {totalExpenses}</span>
+        Expenses: <span className="expenses">₹ {totalExpenses}</span>
       </h2>
       <button
         className="add_expense_button"
         type="button"
         onClick={() => setIsExpenseOpen(true)}
       >
-        +Add Expense
+        + Add Expense
       </button>
       <Modal
         isOpen={isExpenseOpen}

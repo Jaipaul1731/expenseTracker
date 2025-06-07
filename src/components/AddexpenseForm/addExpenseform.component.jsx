@@ -1,5 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
+import { useSnackbar } from "notistack";
+import "./expensesform.style.css";
 
 const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
   const [isExpenseOpen, setIsExpenseOpen] = useState(false);
@@ -7,6 +9,7 @@ const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
   const [expenseCategory, setExpenseCategory] = useState("");
   const [expensePrice, setExpensePrice] = useState("");
   const [expenseDate, setExpenseDate] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleAddExpense = (e) => {
     e.preventDefault();
@@ -20,12 +23,17 @@ const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
       price <= 0 ||
       expensePrice.includes(".")
     ) {
-      alert("Please fill out all fields correctly (no decimals or negatives)");
+      enqueueSnackbar(
+        "Please fill out all fields correctly (no decimals or negatives).",
+        { variant: "warning" }
+      );
       return;
     }
 
     if (price > balance) {
-      alert("Not enough balance to add this expense.");
+      enqueueSnackbar("Not enough balance to add this expense.", {
+        variant: "warning",
+      });
       return;
     }
 
@@ -52,11 +60,19 @@ const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
     setExpenseDate("");
     setIsExpenseOpen(false);
 
-    alert("Expense added!");
+    enqueueSnackbar("Expense added!.", { variant: "success" });
   };
+  const totalExpenses = expenses.reduce((sum, exp) => sum + exp.price, 0);
   return (
-    <div>
-      <button type="button" onClick={() => setIsExpenseOpen(true)}>
+    <div className="expenses_form">
+      <h2 className="heading">
+        expenses: <span className="expenses">₹ {totalExpenses}</span>
+      </h2>
+      <button
+        className="add_expense_button"
+        type="button"
+        onClick={() => setIsExpenseOpen(true)}
+      >
         +Add Expense
       </button>
       <Modal

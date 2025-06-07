@@ -1,18 +1,22 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { useSnackbar } from "notistack";
+import "./walletBalance.style.css";
 
 Modal.setAppElement("#root");
 
 const WalletBalance = ({ balance, setBalance }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [income, setIncome] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handelIncome = (e) => {
     e.preventDefault();
     const amount = parseInt(income, 10);
     if (!amount && amount <= 0) {
-      alert("Please enter the valid income amount");
+      enqueueSnackbar("Please enter the valid income amount.", {
+        variant: "warning",
+      });
       return;
     }
     const newBalance = balance + amount;
@@ -22,10 +26,17 @@ const WalletBalance = ({ balance, setBalance }) => {
   };
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
-      <h2>Wallet Ballance: {balance}</h2>
-      <button onClick={() => setIsOpen(true)}>+ AddIncome</button>
+    <div className="wallet_balance">
+      <h2 className="heading">
+        Wallet Ballance: <span className="balance">₹ {balance}</span>
+      </h2>
+      <button
+        type="button"
+        className="wallet_button"
+        onClick={() => setIsOpen(true)}
+      >
+        + AddIncome
+      </button>
       <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
         <h3>Add income</h3>
         <form onSubmit={handelIncome}>

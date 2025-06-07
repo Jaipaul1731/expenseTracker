@@ -1,0 +1,21 @@
+.expenses_form {
+  background-color: #9c9c9c;
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 300px;
+  min-height: 100px;
+}
+.add_expense_button {
+  padding: 8px 10px;
+  font-size: 15px;
+  background: linear-gradient(90deg, rgba(255, 135, 135, 1) 0%, #ff4040 100%);
+  border: none;
+  color: white;
+  border-radius: 25px;
+}
+.expenses {
+  color: #f5bc49;
+}

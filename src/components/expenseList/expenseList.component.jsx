@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import ExpenseItem from "./expensesItem.component";
 import Modal from "react-modal";
+import { useSnackbar } from "notistack";
 
 function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
   // handling edit state here
@@ -11,6 +12,7 @@ function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
   const [editedPrice, setEditedPrice] = useState("");
   const [editedCategory, setEditedCategory] = useState("");
   const [editedDate, setEditedDate] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleEditClick = (expense) => {
     setEditingExpense(expense);
@@ -31,14 +33,18 @@ function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
       isNaN(updatedPrice) ||
       updatedPrice <= 0
     ) {
-      alert("Please fill all fields correctly");
+      enqueueSnackbar("Please fill all fields correctly", {
+        variant: "warning",
+      });
       return;
     }
 
     // Adjust wallet balance:
     const priceDifference = updatedPrice - editingExpense.price;
     if (priceDifference > balance) {
-      alert("Not enough balance to update this expense");
+      enqueueSnackbar("Not enough balance to update this expense", {
+        variant: "warning",
+      });
       return;
     }
 

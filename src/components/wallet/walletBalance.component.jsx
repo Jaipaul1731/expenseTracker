@@ -28,14 +28,14 @@ const WalletBalance = ({ balance, setBalance }) => {
   return (
     <div className="wallet_balance">
       <h2 className="heading">
-        Wallet Ballance: <span className="balance">₹ {balance}</span>
+        Wallet Balance: <span className="balance">₹ {balance}</span>
       </h2>
       <button
         type="button"
         className="wallet_button"
         onClick={() => setIsOpen(true)}
       >
-        + AddIncome
+        + Add Income
       </button>
       <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
         <h3>Add income</h3>

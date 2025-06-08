@@ -105,10 +105,10 @@ const AddExpenseForm = ({ balance, setBalance, expenses, setExpenses }) => {
             required
           >
             <option value="">Select Category</option>
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Health">Health</option>
+            <option value="Food">Entertainment</option>
+            <option value="Travel">Food</option>
+            <option value="Shopping">Travels</option>
+            {/* <option value="Health">Health</option> */}
           </select>
           <input
             name="date"

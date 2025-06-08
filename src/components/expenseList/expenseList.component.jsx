@@ -73,7 +73,7 @@ function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
     <div>
       <h2>Transactions</h2>
       {expenses.length === 0 ? (
-        <p>No expenses yet.</p>
+        <p>No transactions!</p>
       ) : (
         <ul>
           {expenses.map((expense) => (
@@ -109,10 +109,10 @@ function ExpenseList({ balance, setBalance, expenses, setExpenses }) {
             onChange={(e) => setEditedCategory(e.target.value)}
           >
             <option value="">Select Category</option>
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Health">Health</option>
+            <option value="Food">Entertainment</option>
+            <option value="Travel">Food</option>
+            <option value="Shopping">Travel</option>
+            {/* <option value="Health">Health</option> */}
           </select>
           <input
             name="date"
